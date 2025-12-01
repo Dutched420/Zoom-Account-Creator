@@ -91,18 +91,6 @@ Creation date
 
 Working status
 
-📸 Screenshots
-
-(Replace these with real images later)
-
-Create Account Screen
-
-![Create Screen](assets/screenshot-create.png)
-
-Saved Accounts
-
-![Saved Accounts](assets/screenshot-saved.png)
-
 ⚠️ Disclaimer
 
 This project is intended for educational and research purposes only.
