@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zoom Account Creator</title>
+
+    <style>
+        /* ------------------------------
+           GLOBAL DARK THEME
+        ------------------------------ */
+        body {
+            margin: 0;
+            font-family: "Inter", Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            background: #121418;
+            color: #e4e6eb;
+        }
+
+        h2,
+        h3,
+        label {
+            color: #ffffff;
+        }
+
+        /* ------------------------------
+           SIDEBAR
+        ------------------------------ */
+        .sidebar {
+            width: 230px;
+            background: #1a1d23;
+            border-right: 1px solid #2a2e35;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar h1 {
+            font-size: 22px;
+            color: #4a93ff;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s ease;
+        }
+
+        .nav-item:hover {
+            background: #2a2e35;
+        }
+
+        .nav-item.active {
+            background: #4a93ff;
+            color: #fff;
+        }
+
+        /* ------------------------------
+           MAIN CONTENT
+        ------------------------------ */
+        .content {
+            flex: 1;
+            padding: 35px;
+            overflow-y: auto;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ------------------------------
+           FORM INPUTS
+        ------------------------------ */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #333842;
+            background: #1c1f25;
+            color: #fff;
+            font-size: 15px;
+            transition: border 0.2s;
+        }
+
+        input:focus {
+            border-color: #4a93ff;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: #4a93ff;
+            border-radius: 6px;
+            color: white;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: #3a7ae6;
+        }
+
+        /* ------------------------------
+           LOG OUTPUT
+        ------------------------------ */
+        #log {
+            width: 100%;
+            height: 240px;
+            background: #0c0d10;
+            border: 1px solid #2a2e35;
+            border-radius: 6px;
+            padding: 10px;
+            overflow-y: auto;
+            white-space: pre-line;
+            color: #48ffb2;
+            font-size: 14px;
+        }
+
+        /* ------------------------------
+           ACCOUNTS LIST
+        ------------------------------ */
+        .account-card {
+            background: #1c1f25;
+            border: 1px solid #2a2e35;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            transition: transform 0.15s ease, border-color 0.2s ease;
+        }
+
+        .account-card:hover {
+            transform: translateY(-2px);
+            border-color: #4a93ff;
+        }
+
+        /* ------------------------------
+           CLICK-TO-COPY STYLING
+        ------------------------------ */
+
+        .copy-field {
+            padding: 6px 0;
+            cursor: pointer;
+            transition: color 0.15s ease;
+        }
+
+        .copy-field:hover {
+            color: #4a93ff;
+        }
+
+        .copy-feedback {
+            display: none;
+            margin-top: 8px;
+            color: #4a93ff;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h1>CCP Account Creator</h1>
+
+        <div class="nav-item active" data-target="create-section">Create Account</div>
+        <div class="nav-item" data-target="saved-section">Saved Accounts</div>
+        <div class="nav-item" data-target="about">About</div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content">
+
+        <!-- CREATE SECTION -->
+        <div id="create-section" class="section active">
+
+            <h2>Create New Account</h2>
+
+            <label>First Name:</label>
+            <input id="firstName" type="text" placeholder="John">
+
+            <label>Last Name:</label>
+            <input id="lastName" type="text" placeholder="Doe">
+
+            <label>Birth Year:</label>
+            <input id="birthYear" type="number" placeholder="2000">
+
+            <label>Password:</label>
+            <input id="password" type="text" placeholder="Password123!">
+
+            <button id="createBtn">Create Account</button>
+
+            <h3>Status Log</h3>
+            <div id="log"></div>
+        </div>
+
+        <!-- SAVED ACCOUNTS SECTION -->
+        <div id="saved-section" class="section">
+            <h2>Saved Accounts</h2>
+            <div id="accountsList">Loading...</div>
+        </div>
+
+        <div id="about" class="section">
+            <h2>About</h2>
+
+            <p style="margin-top:10px; line-height:1.6; color:#c7c9d1;">
+                Developed by <b>John Galvenstone</b> for the <b>CCP THUGS</b>
+            </p>
+
+            <p style="margin-top:10px; line-height:1.6; color:#fa2205;">
+                I recommend using a VPN when creating an account.
+                Using free or non residential VPN's might trigger CloudFlare.
+                If it's popular enough I will work add proxy integration.
+            </p>
+
+            <p style="margin-top:20px; line-height:1.6; color:#c7c9d1;">
+                AI was used to make the frontend. Any other code was written by John Galvenstone.<br>
+                When copying code I would appreciate credits where they are due.<br>
+                This project will always be open source. Github: <br>
+                <a href="#" style="color:#4a93ff; text-decoration:none;">https://github.com/Dutched420/Zoom-Account-Creator</a>
+            </p>
+
+            <p style="margin-top:10px; line-height:1.6; color:#c7c9d1;">
+                Bugs? Contact "monkemaster" on Discord.
+            </p>
+        </div>
+
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+
+</html>
