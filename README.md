@@ -17,26 +17,6 @@ A desktop application built with Electron, Puppeteer, and MailJS that automatica
 
 ---
 
-## Project Structure
-
-ZoomCreator-App/
- ├─ automation/
- │   └─ zoom.js
- ├─ functions/
- │   └─ createAccount.js
- ├─ renderer/
- │   ├─ index.html
- │   └─ renderer.js
- ├─ assets/
- │   └─ icon.png
- ├─ preload.cjs
- ├─ main.js
- ├─ accounts.json  (auto-generated)
- ├─ package.json
- └─ README.md
-
----
-
 ## Development Setup
 
 Clone the repository:
