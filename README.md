@@ -21,7 +21,7 @@ A desktop application built with Electron, Puppeteer, and MailJS that automatica
 
 Clone the repository:
 
-git clone https://github.com/YOUR_USERNAME/Zoom-Account-Creator.git
+git clone (https://github.com/Dutched420/Zoom-Account-Creator)
 cd Zoom-Account-Creator
 
 Install dependencies:
