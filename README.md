@@ -15,24 +15,6 @@ A desktop application built with Electron, Puppeteer, and MailJS that automatica
 - Fully local desktop app
 - Builds into a standalone Windows executable
 
----
-
-## Development Setup
-
-Clone the repository:
-
-git clone (https://github.com/Dutched420/Zoom-Account-Creator)
-cd Zoom-Account-Creator
-
-Install dependencies:
-
-npm install
-
-Start the app:
-
-npm start
-
----
 
 ## Building the Windows Executable
 
