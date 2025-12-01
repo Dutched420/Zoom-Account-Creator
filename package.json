@@ -1,0 +1,45 @@
+{
+  "name": "zoom-electron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "@cemalgnlts/mailjs": "^2.0.5",
+    "@faker-js/faker": "^8.3.1",
+    "puppeteer": "^24.31.0",
+    "puppeteer-core": "^24.31.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "devDependencies": {
+    "electron-builder": "^26.0.12",
+    "electron": "^29.0.0"
+  },
+  "build": {
+    "compression": "store",
+    "appId": "com.zoomcreator.app",
+    "productName": "Zoom Account Creator",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": false,
+    "linux": false,
+    "files": [
+      "automation/**/*",
+      "functions/**/*",
+      "renderer/**/*",
+      "assets/**/*",
+      "preload.cjs",
+      "main.js",
+      "*.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.png"
+    }
+  }
+}
